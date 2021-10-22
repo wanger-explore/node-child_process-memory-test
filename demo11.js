@@ -10,3 +10,8 @@ var cp = require('child_process');
 const subprocess = cp.spawn('node', ['app.js'], {
   cwd: './',
 })
+
+// 加了 subprocess.stdout.on，打印日志，依然会有内存问题
+subprocess.stdout.on('data', (data) => {
+  console.log(data);
+})

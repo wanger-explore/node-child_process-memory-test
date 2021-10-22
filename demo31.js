@@ -6,5 +6,8 @@ var cp = require('child_process');
 
 const subprocess = cp.spawn('node', ['app.js'], {
   cwd: './',
-  stdio: 'ignore' // 忽略输出流，内存不会增长
+  detached: true
 })
+
+// 启动并关闭该进程后，子进程的内存不会增长。
+process.exit();

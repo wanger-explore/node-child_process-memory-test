@@ -7,11 +7,11 @@
 
 var cp = require('child_process');
 
-const robot = cp.spawn('node', ['app.js'], {
+const subprocess = cp.spawn('node', ['app.js'], {
   cwd: './'
 })
 
-// 加了 robot.stdout.on，哪怕打印 1，也会出现严重的内存问题
-robot.stdout.on('data', (data) => {
+// 加了 subprocess.stdout.on，哪怕打印 1，也会出现严重的内存问题
+subprocess.stdout.on('data', (data) => {
   console.log('1');
 })

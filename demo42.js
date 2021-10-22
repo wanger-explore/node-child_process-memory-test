@@ -7,6 +7,10 @@
 
 var cp = require('child_process');
 
-const robot = cp.exec('node app.js', {
+const subprocess = cp.exec('node app.js', {
   maxBuffer: 1024 * 1024 * 1024
+})
+
+subprocess.stdout.on('data', (data) => {
+  // console.log(data);
 })
