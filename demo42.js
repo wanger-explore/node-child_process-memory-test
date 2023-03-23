@@ -14,3 +14,8 @@ const subprocess = cp.exec('node app.js', {
 subprocess.stdout.on('data', (data) => {
   // console.log(data);
 })
+
+console.log({
+  subprocessPid: subprocess.pid,
+  currentProcessPid: process.pid
+})

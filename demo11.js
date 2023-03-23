@@ -15,3 +15,4 @@ const subprocess = cp.spawn('node', ['app.js'], {
 subprocess.stdout.on('data', (data) => {
   console.log(data);
 })
+

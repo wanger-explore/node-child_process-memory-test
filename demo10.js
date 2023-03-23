@@ -10,3 +10,8 @@ var cp = require('child_process');
 const subprocess = cp.spawn('node', ['app.js'], {
   cwd: './',
 })
+
+console.log({
+  subprocessPid: subprocess.pid,
+  currentProcessPid: process.pid
+})

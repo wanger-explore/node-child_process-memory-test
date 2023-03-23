@@ -5,7 +5,7 @@
  * - 此进程：不会占用大量内存
  * 
  * 但是由于启动子进程时设置了 detached 为 true， 所以这时候关闭此进程时，子进程依然存活。
- * 并且神奇的是，关闭该进程后，子进程的内存不再增长。（看下一个例子）
+ * 并且神奇的是，control + c 关闭该进程后，子进程的内存不会增长。
  */
 
 var cp = require('child_process');
@@ -15,5 +15,7 @@ const subprocess = cp.spawn('node', ['app.js'], {
   detached: true
 })
 
-// 启动并关闭该进程后，子进程的内存不会增长。
-// process.exit();
+console.log({
+  subprocessPid: subprocess.pid,
+  currentProcessPid: process.pid
+})

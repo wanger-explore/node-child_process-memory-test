@@ -8,28 +8,26 @@
 var cp = require('child_process');
 var { log } = require('./log');
 
-const subprocess = cp.exec('node demo50-sub.js', {
+const subprocess = cp.exec('node app.js', {
   maxBuffer: 1024 * 1024 * 1024
 })
 
-log('A pid ===>' + process.pid);
+log('B pid ===>' + process.pid);
+log('C pid ===>' + subprocess.pid);
 
-// setTimeout(() => {
-//   process.exit();
-// }, 3000)
 
 process.on('exit', () => {
-  log('A exit, kill B ===>');
+  log('B exit ===>');
   // subprocess.kill();
 })
 
 
 process.on('SIGINT', (code) => {
-  log('A SIGINT ===>', code);
+  log('B SIGINT ===>', code);
   process.exit();
 })
 
 process.on('SIGTERM', () => {
-  log('A SIGTERM ===>');
+  log('B SIGTERM ===>');
   process.exit();
 })
